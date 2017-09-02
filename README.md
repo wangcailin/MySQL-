@@ -13,8 +13,9 @@ mysqladmin -u root -password ab12
 # 再将root的密码改为djg345
 mysqladmin -u root -p ab12 password djg345
 ```
-
-### 增加新用户
+### 创建新用户
+格式:`CREATE USER 'username'@'host' IDENTIFIED BY 'password'`
+### 给用户分配表
 格式：`grant all on 数据库.* to 用户名@登录主机 identified by “密码”`
 
 ### 创建数据库
