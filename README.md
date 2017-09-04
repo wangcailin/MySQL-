@@ -24,6 +24,18 @@ mysqladmin -u root -p ab12 password djg345
  - CREATE DATABASE 数据库名;
  - GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON 数据库名.* TO 数据库名@localhost IDENTIFIED BY '密码';
  - SET PASSWORD FOR '数据库名'@'localhost' = OLD_PASSWORD('密码');
+ 
+`--skip-lock-tables` 备份有表锁的数据库
 
-
---skip-lock-tables 备份有表锁的数据库
+### windows开启MySQL general log日志
+```shell
+mysql@localhost.(none)>show global variables like "%genera%";
++------------------+------------------------------+
+| Variable_name | Value |
++------------------+------------------------------+
+| general_log | OFF |
+| general_log_file | /data1/mysql9999/etch171.log |
++------------------+------------------------------+
+mysql@localhost.(none)>set global general_log=on;
+mysql@localhost.(none)>set global general_log=off;
+```
