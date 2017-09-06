@@ -34,5 +34,5 @@ mysql@localhost.(none)>set global general_log=on;
 ```
 ### 导出数据库结构
 ```shell
-mysqldump -uroot -pmysql databasefoo table1 table2 > foo.sql 
+mysqldump --opt -d 数据库名 -u root -p > xxx.sql
 ```
