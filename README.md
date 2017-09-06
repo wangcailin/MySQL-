@@ -30,12 +30,9 @@ mysqladmin -u root -p ab12 password djg345
 ### windows开启MySQL general log日志
 ```shell
 mysql@localhost.(none)>show global variables like "%genera%";
-+------------------+------------------------------+
-| Variable_name | Value |
-+------------------+------------------------------+
-| general_log | OFF |
-| general_log_file | /data1/mysql9999/etch171.log |
-+------------------+------------------------------+
 mysql@localhost.(none)>set global general_log=on;
-mysql@localhost.(none)>set global general_log=off;
+```
+### 导出数据库结构
+```shell
+mysqldump -uroot -pmysql databasefoo table1 table2 > foo.sql 
 ```
