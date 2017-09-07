@@ -36,3 +36,14 @@ mysql@localhost.(none)>set global general_log=on;
 ```shell
 mysqldump --opt -d 数据库名 -u root -p > xxx.sql
 ```
+
+### 连接字段
+```
+function statistics_list($where = '', $start = 0, $end = 15, $start_time, $end_time){
+    $sql = "SELECT statistics.*,store.* FROM ecs_touch_sale_statistics statistics, ecs_touch_store store 
+WHERE statistics.store_id = store.id AND 
+UNIX_TIMESTAMP(CONCAT('-',statistics.`year`,statistics.`month`,statistics.`day`)) > ".$start_time." AND 
+UNIX_TIMESTAMP(CONCAT('-',statistics.`year`,statistics.`month`,statistics.`day`)) < ".$end_time.$where."  LIMIT ".$start.",".$end;
+    return $GLOBALS['db']->getAll($sql);
+}
+```
