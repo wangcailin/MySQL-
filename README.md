@@ -47,3 +47,7 @@ UNIX_TIMESTAMP(CONCAT('-',statistics.`year`,statistics.`month`,statistics.`day`)
     return $GLOBALS['db']->getAll($sql);
 }
 ```
+### 
+```
+UPDATE ecs_touch_sale_statistics SET add_time = CONCAT(`year`,`month`,`day`)
+```
