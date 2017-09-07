@@ -49,5 +49,5 @@ UNIX_TIMESTAMP(CONCAT('-',statistics.`year`,statistics.`month`,statistics.`day`)
 ```
 ### 
 ```
-UPDATE ecs_touch_sale_statistics SET add_time = CONCAT(`year`,`month`,`day`)
+UPDATE ecs_touch_sale_statistics SET add_time = UNIX_TIMESTAMP(CONCAT(`year`,`month`,`day`))
 ```
