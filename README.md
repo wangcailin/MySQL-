@@ -51,3 +51,35 @@ UNIX_TIMESTAMP(CONCAT('-',statistics.`year`,statistics.`month`,statistics.`day`)
 ```
 UPDATE ecs_touch_sale_statistics SET add_time = UNIX_TIMESTAMP(CONCAT(`year`,`month`,`day`))
 ```
+
+#### 导出整个数据库中的所有数据
+
+1、在linux命令行下输入:
+`mysqldump -u userName -p  dabaseName  > fileName.sql`
+fileName.sql最好加上路径名
+
+导出数据库中的某个表的数据
+`mysqldump -u userName -p  dabaseName tableName > fileName.sql`
+导出整个数据库中的所有的表结构
+
+在linux命令行下输入：
+`mysqldump -u userName -p -d dabaseName  > fileName.sql`
+注意：是加了-d 
+
+导出整个数据库中某个表的表结构
+
+在linux命令行下输入：
+`mysqldump -u userName -p -d dabaseName tableName > fileName.sql`
+注意：是加了-d
+
+导入mysql方法1
+
+进入linux命令命令行下：
+mysql -uroot -p 回车  输入密码
+`source fileName.sql`
+注意fileName.sql要有路径名，例如：source /home/user/data/fileName.sql
+导入mysql方法2
+
+进入linux命令命令行下：
+`mysql -uroot -p database < fileName.sql`
+注意fileName.sql要有路径名
