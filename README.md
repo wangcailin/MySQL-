@@ -87,15 +87,25 @@ mysql -uroot -p 回车  输入密码
 
 ### 字段处理
 ```mysql
-#添加表字段
-alter table table1 add transactor varchar(10) not Null;
-alter table   table1 add id int unsigned not Null auto_increment primary key
-#修改某个表的字段类型及指定为空或非空
->alter table 表名称 change 字段名称 字段名称 字段类型 [是否允许非空];
->alter table 表名称 modify 字段名称 字段类型 [是否允许非空];
->alter table 表名称 modify 字段名称 字段类型 [是否允许非空];
-#修改某个表的字段名称及指定为空或非空
->alter table 表名称 change 字段原名称 字段新名称 字段类型 [是否允许非空
-#如果要删除某一字段，可用命令：ALTER TABLE mytable DROP 字段 名;
+1：删除列
+ALTER TABLE 【表名字】 DROP 【列名称】
+2：增加列
+ALTER TABLE 【表名字】 ADD 【列名称】 INT NOT NULL  COMMENT '注释说明'
+3：修改列的类型信息
+ALTER TABLE 【表名字】 CHANGE 【列名称】【新列名称（这里可以用和原来列同名即可）】 BIGINT NOT NULL  COMMENT '注释说明'
+4：重命名列
+ALTER TABLE 【表名字】 CHANGE 【列名称】【新列名称】 BIGINT NOT NULL  COMMENT '注释说明'
+5：重命名表
+ALTER TABLE 【表名字】 RENAME 【表新名字】
+6：删除表中主键
+Alter TABLE 【表名字】 drop primary key
+7：添加主键
+ALTER TABLE sj_resource_charges ADD CONSTRAINT PK_SJ_RESOURCE_CHARGES PRIMARY KEY (resid,resfromid)
+8：添加索引
+ALTER TABLE sj_resource_charges add index INDEX_NAME (name);
+9: 添加唯一限制条件索引
+ALTER TABLE sj_resource_charges add unique emp_name2(cardnumber);
+10: 删除索引
+alter table tablename drop index emp_name;
 ```
 
