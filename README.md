@@ -107,5 +107,7 @@ ALTER TABLE sj_resource_charges add index INDEX_NAME (name);
 ALTER TABLE sj_resource_charges add unique emp_name2(cardnumber);
 10: 删除索引
 alter table tablename drop index emp_name;
+11: 在指定字段之前添加一个字段
+ALTER TABLE 【表名字】 ADD 【列名称】 INT NOT NULL  COMMENT '注释说明' AFTER 【在字段之后】;
 ```
 
