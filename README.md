@@ -67,7 +67,7 @@ mysqldump --opt -d 数据库名 -u root -p > xxx.sql
 mysqldump　--opt　-d　数据库名　-u　root　-p　>　xxx.sql　　
 
 2.导出数据不导出结构
-mysqldump　-t　数据库名　-uroot　-p　>　xxx.sql　
+mysqldump -u root -p   -t 数据库名 >> xxx.sql
 
 3.导出数据和表结构
 mysqldump　数据库名　-uroot　-p　>　xxx.sql　
