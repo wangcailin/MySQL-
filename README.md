@@ -54,54 +54,32 @@ UPDATE ecs_touch_sale_statistics SET add_time = UNIX_TIMESTAMP(CONCAT(`year`,`mo
 
 #### mysqldump命令
 ```mysql
-1、在linux命令行下输入:
-`mysqldump -u userName -p  dabaseName  > fileName.sql`
-fileName.sql最好加上路径名
+mysql mysqldump 只导出表结构 不导出数据
+mysqldump --opt -d 数据库名 -u root -p > xxx.sql
 
-导出数据库中的某个表的数据
-`mysqldump -u userName -p  dabaseName tableName > fileName.sql`
-导出整个数据库中的所有的表结构
+备份数据库
 
-在linux命令行下输入：
-`mysqldump -u userName -p -d dabaseName  > fileName.sql`
-注意：是加了-d 
+#mysqldump　数据库名　>数据库备份名
+#mysqldump　-A　-u用户名　-p密码　数据库名>数据库备份名
+#mysqldump　-d　-A　--add-drop-table　-uroot　-p　>xxx.sql
 
-导出整个数据库中某个表的表结构
+1.导出结构不导出数据
+mysqldump　--opt　-d　数据库名　-u　root　-p　>　xxx.sql　　
 
-在linux命令行下输入：
-`mysqldump -u userName -p -d dabaseName tableName > fileName.sql`
-注意：是加了-d
+2.导出数据不导出结构
+mysqldump　-t　数据库名　-uroot　-p　>　xxx.sql　
 
-导入mysql方法1
+3.导出数据和表结构
+mysqldump　数据库名　-uroot　-p　>　xxx.sql　
 
-进入linux命令命令行下：
-mysql -uroot -p 回车  输入密码
-`source fileName.sql`
-注意fileName.sql要有路径名，例如：source /home/user/data/fileName.sql
-导入mysql方法2
+4.导出特定表的结构
+mysqldump　-uroot　-p　-B　数据库名　--table　表名　>　xxx.sql　　
 
-进入linux命令命令行下：
-`mysql -uroot -p database < fileName.sql`
-注意fileName.sql要有路径名
-
-直接将MySQL数据库压缩备份
-mysqldump -h主机名 -u用户名 -p密码 数据库名字  | gzip >备份的数据库名字.sql.gz
-
- 备份MySQL数据库某个(些)表
-mysqldump -h主机名 -u用户名 -p密码 数据库名字 数据库表名1 数据库其他表名2 > 备份数据库名字.sql
-
-同时备份多个MySQL数据库
-mysqldump -h主机名 -u用户名 -p密码 --databases 需要备份的数据库名字1 需要备份的数据库名字2  > 备份数据库名字.sql
-
-注意： --databases  是 --  、 需要备份的数据库名字1 需要备份的数据库名字2 中间是空格。
-
-仅仅备份数据库结构
-mysqldump --no-data -h主机名 -u用户名 -p密码 --databases 需要备份的数据库名字1 需要备份的数据库名字2  > 备份数据库名字.sql
-
-注意：--no-data  是 --  、 需要备份的数据库名字1 需要备份的数据库名字2 中间是空格。
-
-备份服务器上所有数据库
-mysqldump --all-databases -h主机名 -u用户名 -p密码 > 备份数据库名字.sql
+导入数据：
+　　由于mysqldump导出的是完整的SQL语句，所以用mysql客户程序很容易就能把数据导入了：
+  
+#mysql　数据库名　<　文件名
+#source　/tmp/xxx.sql　　
 
 ```
 
