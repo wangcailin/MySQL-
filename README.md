@@ -52,7 +52,7 @@ UNIX_TIMESTAMP(CONCAT('-',statistics.`year`,statistics.`month`,statistics.`day`)
 UPDATE ecs_touch_sale_statistics SET add_time = UNIX_TIMESTAMP(CONCAT(`year`,`month`,`day`))
 ```
 
-#### 导出整个数据库中的所有数据
+#### mysqldump命令
 ```mysql
 1、在linux命令行下输入:
 `mysqldump -u userName -p  dabaseName  > fileName.sql`
@@ -83,6 +83,26 @@ mysql -uroot -p 回车  输入密码
 进入linux命令命令行下：
 `mysql -uroot -p database < fileName.sql`
 注意fileName.sql要有路径名
+
+直接将MySQL数据库压缩备份
+mysqldump -h主机名 -u用户名 -p密码 数据库名字  | gzip >备份的数据库名字.sql.gz
+
+ 备份MySQL数据库某个(些)表
+mysqldump -h主机名 -u用户名 -p密码 数据库名字 数据库表名1 数据库其他表名2 > 备份数据库名字.sql
+
+同时备份多个MySQL数据库
+mysqldump -h主机名 -u用户名 -p密码 --databases 需要备份的数据库名字1 需要备份的数据库名字2  > 备份数据库名字.sql
+
+注意： --databases  是 --  、 需要备份的数据库名字1 需要备份的数据库名字2 中间是空格。
+
+仅仅备份数据库结构
+mysqldump --no-data -h主机名 -u用户名 -p密码 --databases 需要备份的数据库名字1 需要备份的数据库名字2  > 备份数据库名字.sql
+
+注意：--no-data  是 --  、 需要备份的数据库名字1 需要备份的数据库名字2 中间是空格。
+
+备份服务器上所有数据库
+mysqldump --all-databases -h主机名 -u用户名 -p密码 > 备份数据库名字.sql
+
 ```
 
 ### 字段处理
