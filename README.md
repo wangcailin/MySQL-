@@ -72,8 +72,12 @@ mysqldump -u root -p   -t 数据库名 >> xxx.sql
 3.导出数据和表结构
 mysqldump　数据库名　-uroot　-p　>　xxx.sql　
 
-4.导出特定表的结构
+4.导出特定表的数据和结构
 mysqldump　-uroot　-p　-B　数据库名　--table　表名　>　xxx.sql　　
+5.导出指定表的数据
+mysqldump -t database -u username -ppassword --tables table_name1 table_name2 table_name3 >xxx.sql
+6.导出指定表的结构
+mysqldump -d database -u username -ppassword --tables table_name1 table_name2 table_name3>xxx.sq
 
 导入数据：
 　　由于mysqldump导出的是完整的SQL语句，所以用mysql客户程序很容易就能把数据导入了：
