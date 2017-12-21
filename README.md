@@ -25,6 +25,11 @@ mysqladmin -u root -p ab12 password djg345
  - GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON 数据库名.* TO 数据库名@localhost IDENTIFIED BY '密码';
  - SET PASSWORD FOR '数据库名'@'localhost' = OLD_PASSWORD('密码');
  
+#### 允许root外网登录 
+```
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'youpassword' WITH GRANT OPTION;
+```
+ 
 `--skip-lock-tables` 备份有表锁的数据库
 
 ### windows开启MySQL general log日志
